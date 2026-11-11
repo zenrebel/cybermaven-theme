@@ -4,45 +4,52 @@
 	"settings": {
 		"color": {
 			"palette": [
+				{ "name": "Night road", "slug": "base", "color": "#13151B" },
+				{ "name": "Moonlight", "slug": "contrast", "color": "#E6DFD0" },
+				{ "name": "Golden moon", "slug": "accent-1", "color": "#D7A443" },
+				{ "name": "Drive-in ember", "slug": "accent-2", "color": "#B85C38" },
+				{ "name": "Pale moon", "slug": "accent-3", "color": "#EADBB8" },
+				{ "name": "Dust", "slug": "accent-4", "color": "#A9A497" },
+				{ "name": "Fog", "slug": "accent-5", "color": "#1F222B" },
+				{ "name": "Hairline", "slug": "accent-6", "color": "#E6DFD026" }
+			]
+		},
+		"typography": {
+			"fontFamilies": [
 				{
-					"name": "Base",
-					"slug": "base",
-					"color": "#1B1B1B"
+					"name": "Big Shoulders Display",
+					"slug": "display",
+					"fontFamily": "\"Big Shoulders Display\", \"Arial Narrow\", sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Big Shoulders Display",
+							"fontStyle": "normal",
+							"fontWeight": "100 900",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/big-shoulders-display.woff2" ]
+						}
+					]
 				},
 				{
-					"name": "Contrast",
-					"slug": "contrast",
-					"color": "#F0F0F0"
-				},
-				{
-					"name": "Accent 1",
-					"slug": "accent-1",
-					"color": "#786D0A"
-				},
-				{
-					"name": "Accent 2",
-					"slug": "accent-2",
-					"color": "#442369"
-				},
-				{
-					"name": "Accent 3",
-					"slug": "accent-3",
-					"color": "#D1D0EA"
-				},
-				{
-					"name": "Accent 4",
-					"slug": "accent-4",
-					"color": "#CBCBCB"
-				},
-				{
-					"name": "Accent 5",
-					"slug": "accent-5",
-					"color": "#353535"
-				},
-				{
-					"name": "Accent 6",
-					"slug": "accent-6",
-					"color": "#FFFFFF33"
+					"name": "Newsreader",
+					"slug": "body",
+					"fontFamily": "Newsreader, Georgia, serif",
+					"fontFace": [
+						{
+							"fontFamily": "Newsreader",
+							"fontStyle": "normal",
+							"fontWeight": "200 800",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/newsreader.woff2" ]
+						},
+						{
+							"fontFamily": "Newsreader",
+							"fontStyle": "italic",
+							"fontWeight": "200 800",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/newsreader-italic.woff2" ]
+						}
+					]
 				}
 			]
 		}
@@ -50,10 +57,79 @@
 	"styles": {
 		"color": {
 			"background": "var:preset|color|base",
-			"text": "var:preset|color|accent-4"
+			"text": "var:preset|color|contrast"
 		},
 		"typography": {
-			"fontFamily": "var:preset|font-family|manrope"
+			"fontFamily": "var:preset|font-family|body",
+			"fontWeight": "400",
+			"lineHeight": "1.55",
+			"letterSpacing": "0"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"fontWeight": "700",
+					"lineHeight": "0.95",
+					"letterSpacing": "0.01em"
+				},
+				"color": { "text": "var:preset|color|contrast" }
+			},
+			"link": {
+				"color": { "text": "currentColor" },
+				":hover": {
+					"color": { "text": "var:preset|color|accent-1" }
+				}
+			},
+			"button": {
+				"border": { "radius": "2px" },
+				"color": {
+					"background": "var:preset|color|accent-1",
+					"text": "var:preset|color|base"
+				},
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"fontWeight": "700",
+					"letterSpacing": "0.04em"
+				},
+				"spacing": {
+					"padding": { "top": "0.7rem", "bottom": "0.7rem", "left": "1.6rem", "right": "1.6rem" }
+				},
+				":hover": {
+					"color": {
+						"background": "var:preset|color|accent-2",
+						"text": "var:preset|color|contrast"
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/site-title": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"fontWeight": "800",
+					"letterSpacing": "0.03em"
+				}
+			},
+			"core/navigation": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"fontWeight": "600",
+					"letterSpacing": "0.05em"
+				}
+			},
+			"core/site-tagline": {
+				"typography": { "fontStyle": "italic" },
+				"color": { "text": "var:preset|color|accent-4" }
+			}
+		},
+		"variations": {
+			"section-3": {
+				"color": {
+					"background": "var:preset|color|accent-5",
+					"text": "var:preset|color|contrast"
+				}
+			}
 		}
 	}
 }

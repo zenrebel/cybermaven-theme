@@ -15,6 +15,9 @@ Child theme of Twenty Twenty-Five for [cybermaven.net](https://cybermaven.net).
 Hostinger Git deployment pulls `main` into `wp-content/themes/cybermaven/`.
 Deploy to the theme folder only, never the site root.
 
-## Baseline
+## Design: night drive (v0.2.0)
 
-v0.1.0 reproduces the site's current look (Twenty Twenty-Five "Evening" palette, Manrope) so activating it changes nothing visually.
+- Palette (slugs kept from Twenty Twenty-Five so patterns still work): night road `#13151B`, moonlight `#E6DFD0`, golden moon `#D7A443`, drive-in ember `#B85C38`, pale moon `#EADBB8`, dust `#A9A497`, fog `#1F222B`.
+- Type: Big Shoulders Display for headings, site title, nav and buttons; Newsreader for body text. Both self-hosted in `assets/fonts` (SIL Open Font License).
+- The loud element is the home page title: huge, condensed, left-aligned, with a headlight glow. Everything else stays quiet.
+- Faint film grain and a headlight bloom at the top of every page.

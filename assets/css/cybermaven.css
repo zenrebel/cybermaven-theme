@@ -1,5 +1,174 @@
 /*
- * CyberMaven custom styles.
- * Prefer theme.json for colors, fonts and spacing; use this file for
- * effects theme.json can't express (grain, glows, hover motion, etc.).
+ * CyberMaven: night drive.
+ * Colors, fonts and spacing live in theme.json. This file holds what
+ * theme.json can't express: the headlight glow, film grain, and a few
+ * layout moves on the home page.
  */
+
+/* ---------- Atmosphere ---------- */
+
+body {
+	/* A faint headlight bloom at the top of every page. */
+	background-image: radial-gradient(
+		ellipse 70% 45% at 18% -8%,
+		rgba(215, 164, 67, 0.11) 0%,
+		rgba(184, 92, 56, 0.05) 45%,
+		transparent 75%
+	);
+	background-repeat: no-repeat;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* Film grain over everything; never blocks clicks. */
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	opacity: 0.07;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Content blocks that still point at the old font preset follow the body font. */
+.has-manrope-font-family {
+	font-family: inherit !important;
+}
+
+::selection {
+	background: var(--wp--preset--color--accent-1);
+	color: var(--wp--preset--color--base);
+}
+
+:where(a, button, .wp-block-button__link, input, textarea):focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent-1);
+	outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+
+header .wp-block-site-title {
+	font-size: 1.65rem;
+	line-height: 1;
+}
+
+header .wp-block-site-title a {
+	text-decoration: none;
+}
+
+header .wp-block-navigation {
+	font-size: 1.2rem;
+}
+
+header .wp-block-navigation a:hover {
+	color: var(--wp--preset--color--accent-1);
+}
+
+/* ---------- Images ---------- */
+
+.wp-block-image img {
+	border-radius: 2px;
+}
+
+/* ---------- Home page ---------- */
+
+/* The title is the one loud thing: huge, condensed, left-aligned,
+   with a glow like headlights through fog. */
+.home h1.wp-block-post-title {
+	max-width: var(--wp--style--global--wide-size) !important;
+	margin-top: var(--wp--preset--spacing--40);
+	margin-bottom: var(--wp--preset--spacing--50);
+	font-size: clamp(4.5rem, 15vw, 12.5rem);
+	font-weight: 900;
+	line-height: 0.85;
+	letter-spacing: 0.005em;
+	text-align: left;
+	color: var(--wp--preset--color--contrast);
+	text-shadow:
+		0 0 0.06em rgba(234, 219, 184, 0.35),
+		0 0 0.35em rgba(215, 164, 67, 0.28),
+		0 0 1.1em rgba(184, 92, 56, 0.18);
+	animation: cm-headlights 2.4s ease-out 0.15s both;
+}
+
+@keyframes cm-headlights {
+	from {
+		opacity: 0.15;
+		text-shadow: 0 0 0 rgba(215, 164, 67, 0);
+	}
+}
+
+/* Intro lines sit under the title, left-aligned, at a readable width. */
+.home .wp-block-post-content > p.is-style-text-subtitle {
+	text-align: left !important;
+	padding-right: max(0px, calc(min(100%, var(--wp--style--global--wide-size)) - 34em));
+	font-size: var(--wp--preset--font-size--large);
+	line-height: 1.5;
+	color: var(--wp--preset--color--accent-4);
+	text-wrap: pretty;
+}
+
+.home .wp-block-post-content > p.is-style-text-subtitle:first-of-type {
+	color: var(--wp--preset--color--contrast);
+	font-style: italic;
+}
+
+/* Featured release: the title reads like a sign. */
+.home .wp-block-columns h2.wp-block-heading {
+	font-size: clamp(2.6rem, 5vw, 4.2rem);
+	font-weight: 800;
+}
+
+/* Explore: heading on its own line, then the three doors side by side
+   (stacking on phones) instead of an uneven wrap. */
+.home .wp-block-group-is-layout-grid:has(> * > h2.has-x-large-font-size) {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)) !important;
+}
+
+.home .wp-block-group-is-layout-grid > *:has(> h2.has-x-large-font-size) {
+	grid-column: 1 / -1;
+}
+
+.home h2.has-x-large-font-size {
+	font-size: clamp(2.6rem, 5vw, 4.2rem) !important;
+	font-weight: 800;
+}
+
+/* Instagram panel heading. */
+.home .is-style-section-3 h2 {
+	font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
+	font-weight: 800;
+}
+
+/* Explore tiles: captions in the display face. */
+.home .wp-block-group-is-layout-grid p.has-text-align-center a {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+	font-size: 1.5rem;
+	letter-spacing: 0.04em;
+	text-decoration: none;
+}
+
+.home .wp-block-group-is-layout-grid p.has-text-align-center a:hover {
+	color: var(--wp--preset--color--accent-1);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+	border-top: 1px solid var(--wp--preset--color--accent-6);
+}
+
+footer .has-small-font-size {
+	color: var(--wp--preset--color--accent-4);
+}
+
+/* ---------- Motion preference ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.home h1.wp-block-post-title {
+		animation: none;
+	}
+}
