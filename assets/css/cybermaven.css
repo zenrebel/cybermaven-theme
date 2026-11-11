@@ -121,8 +121,14 @@ header .wp-block-navigation-item__content[aria-current="page"] {
 	padding-top: var(--wp--preset--spacing--70);
 }
 
+.wp-block-navigation.items-justified-right .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
+.wp-block-navigation.items-justified-right .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+	--navigation-layout-justification-setting: flex-start;
+	--navigation-layout-justify: flex-start;
+	align-items: flex-start !important;
+}
+
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
-	align-items: flex-start;
 	gap: 0.6rem;
 }
 
