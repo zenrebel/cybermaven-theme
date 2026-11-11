@@ -155,6 +155,203 @@ header .wp-block-navigation a:hover {
 	color: var(--wp--preset--color--accent-1);
 }
 
+/* ---------- Interior pages ---------- */
+
+/* Page titles: the home title's little sibling. */
+body:not(.home) h1.wp-block-post-title {
+	font-size: clamp(3.4rem, 9vw, 7rem);
+	font-weight: 900;
+	line-height: 0.88;
+	margin-bottom: var(--wp--preset--spacing--50);
+	text-shadow:
+		0 0 0.08em rgba(234, 219, 184, 0.25),
+		0 0 0.5em rgba(215, 164, 67, 0.18);
+}
+
+/* Subtitle paragraphs read left-aligned everywhere. */
+body:not(.home) .wp-block-post-content > p.is-style-text-subtitle {
+	text-align: left !important;
+	padding-right: max(0px, calc(min(100%, var(--wp--style--global--wide-size)) - 36em));
+	color: var(--wp--preset--color--accent-4);
+	font-style: italic;
+	text-wrap: pretty;
+}
+
+/* A release on its own page: big sign-style title, then an italic lead. */
+.wp-block-post-content > h2.wp-block-heading:first-child {
+	font-size: clamp(2.6rem, 6vw, 4.6rem);
+	font-weight: 800;
+	margin-top: 0;
+}
+
+.wp-block-post-content > h2.wp-block-heading:first-child + p {
+	font-style: italic;
+	font-size: var(--wp--preset--font-size--x-large);
+	line-height: 1.35;
+	color: var(--wp--preset--color--accent-3);
+}
+
+/* Videos get room to breathe. */
+.wp-block-post-content > .wp-block-embed.is-type-video {
+	max-width: var(--wp--style--global--wide-size) !important;
+	margin-top: var(--wp--preset--spacing--50);
+	margin-bottom: var(--wp--preset--spacing--50);
+}
+
+.wp-block-embed.is-type-video iframe {
+	border-radius: 2px;
+	box-shadow: 0 0 4rem rgba(215, 164, 67, 0.08);
+}
+
+/* ---------- Galleries: an uncropped art wall ---------- */
+
+.wp-block-gallery.has-nested-images {
+	display: block !important;
+	column-count: 3;
+	column-gap: var(--wp--preset--spacing--30);
+}
+
+.wp-block-gallery.has-nested-images figure.wp-block-image:not(#individual-image) {
+	display: block;
+	width: 100% !important;
+	margin: 0 0 var(--wp--preset--spacing--30) !important;
+	break-inside: avoid;
+}
+
+.wp-block-gallery.has-nested-images.is-cropped figure.wp-block-image img,
+.wp-block-gallery.has-nested-images figure.wp-block-image img {
+	width: 100%;
+	height: auto !important;
+	object-fit: contain !important;
+	flex: none;
+}
+
+.wp-block-gallery.has-nested-images figure.wp-block-image a {
+	display: block;
+	cursor: zoom-in;
+}
+
+.wp-block-gallery.has-nested-images figure.wp-block-image a img {
+	transition: filter 0.4s ease;
+}
+
+.wp-block-gallery.has-nested-images figure.wp-block-image a:hover img {
+	filter: brightness(1.12);
+}
+
+@media (max-width: 900px) {
+	.wp-block-gallery.has-nested-images {
+		column-count: 2;
+	}
+}
+
+@media (max-width: 520px) {
+	.wp-block-gallery.has-nested-images {
+		column-count: 1;
+	}
+}
+
+/* ---------- Lightbox ---------- */
+
+.cm-lightbox {
+	width: 100vw;
+	height: 100vh;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--wp--preset--color--contrast);
+}
+
+.cm-lightbox::backdrop {
+	background: rgba(10, 11, 15, 0.94);
+}
+
+.cm-lightbox[open] {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	place-items: center;
+}
+
+.cm-lightbox__figure {
+	margin: 0;
+	padding: 4rem 4.5rem 0;
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	min-height: 0;
+}
+
+.cm-lightbox__img {
+	max-width: 100%;
+	max-height: calc(100vh - 9rem);
+	object-fit: contain;
+	box-shadow: 0 0 6rem rgba(215, 164, 67, 0.12);
+	border-radius: 2px;
+}
+
+.cm-lightbox__caption {
+	padding: 1rem 1.5rem 1.5rem;
+	font-style: italic;
+	color: var(--wp--preset--color--accent-4);
+	text-align: center;
+	max-width: 40em;
+}
+
+.cm-lightbox button {
+	position: fixed;
+	background: none;
+	border: 0;
+	padding: 0.5rem 0.9rem;
+	color: var(--wp--preset--color--contrast);
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+	font-size: 2.6rem;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.cm-lightbox button:hover,
+.cm-lightbox button:focus-visible {
+	opacity: 1;
+	color: var(--wp--preset--color--accent-1);
+}
+
+.cm-lightbox__close {
+	top: 0.75rem;
+	right: 0.75rem;
+}
+
+.cm-lightbox__prev {
+	left: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.cm-lightbox__next {
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+	.cm-lightbox__figure {
+		padding: 3.5rem 0.75rem 0;
+	}
+
+	.cm-lightbox__prev,
+	.cm-lightbox__next {
+		top: auto;
+		bottom: 0.5rem;
+		transform: none;
+	}
+}
+
 /* ---------- Footer ---------- */
 
 footer {

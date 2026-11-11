@@ -23,6 +23,27 @@ function cybermaven_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'cybermaven_enqueue_styles' );
 
+/**
+ * On-site image viewer for galleries, only on pages that have one.
+ */
+function cybermaven_enqueue_lightbox() {
+	if ( ! is_singular() || ! has_block( 'core/gallery' ) ) {
+		return;
+	}
+	$path = get_stylesheet_directory() . '/assets/js/lightbox.js';
+	wp_enqueue_script(
+		'cybermaven-lightbox',
+		get_stylesheet_directory_uri() . '/assets/js/lightbox.js',
+		array(),
+		file_exists( $path ) ? filemtime( $path ) : null,
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'cybermaven_enqueue_lightbox' );
+
 function cybermaven_editor_styles() {
 	add_editor_style( 'assets/css/cybermaven.css' );
 }
