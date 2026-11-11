@@ -111,6 +111,9 @@ header .wp-block-navigation-item__content[aria-current="page"] {
 		transparent 70%
 	);
 	padding: var(--wp--preset--spacing--40) var(--wp--preset--spacing--50);
+	/* The header nav is right-aligned; the open phone menu reads from the left. */
+	--navigation-layout-justification-setting: flex-start;
+	--navigation-layout-justify: flex-start;
 }
 
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
