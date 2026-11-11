@@ -130,7 +130,7 @@
 		dialog.className = 'cm-lightbox';
 		dialog.setAttribute( 'aria-label', 'Image viewer' );
 		dialog.innerHTML =
-			'<figure class="cm-lightbox__figure"><img class="cm-lightbox__img" alt=""></figure>' +
+			'<figure class="cm-lightbox__figure" tabindex="-1" autofocus><img class="cm-lightbox__img" alt=""></figure>' +
 			'<p class="cm-lightbox__caption"></p>' +
 			'<button type="button" class="cm-lightbox__prev" aria-label="Previous image">&lsaquo;</button>' +
 			'<button type="button" class="cm-lightbox__next" aria-label="Next image">&rsaquo;</button>' +

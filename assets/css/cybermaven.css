@@ -157,12 +157,24 @@ header .wp-block-navigation a:hover {
 
 /* ---------- Interior pages ---------- */
 
+/* Interior pages hang everything off one left edge (the wide column's),
+   so the title, text, video and art wall all line up. */
+body:not(.home) h1.wp-block-post-title,
+body:not(.home) .wp-block-post-content > :not(.alignfull) {
+	margin-left: max(0px, calc((100% - var(--wp--style--global--wide-size)) / 2)) !important;
+	margin-right: auto !important;
+}
+
+body:not(.home) h1.wp-block-post-title {
+	max-width: var(--wp--style--global--wide-size) !important;
+}
+
 /* Page titles: the home title's little sibling. */
 body:not(.home) h1.wp-block-post-title {
 	font-size: clamp(3.4rem, 9vw, 7rem);
 	font-weight: 900;
 	line-height: 0.88;
-	margin-bottom: var(--wp--preset--spacing--50);
+	margin-bottom: var(--wp--preset--spacing--60);
 	text-shadow:
 		0 0 0.08em rgba(234, 219, 184, 0.25),
 		0 0 0.5em rgba(215, 164, 67, 0.18);
@@ -284,6 +296,7 @@ body:not(.home) .wp-block-post-content > p.is-style-text-subtitle {
 	height: 100%;
 	box-sizing: border-box;
 	min-height: 0;
+	outline: none;
 }
 
 .cm-lightbox__img {
